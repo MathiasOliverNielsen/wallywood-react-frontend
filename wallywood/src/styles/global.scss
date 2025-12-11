@@ -21,7 +21,7 @@ body {
 }
 .site-header .container {
   background: rgba($panel, 0.9);
-  border-bottom: 1px solid $border;
+  border-bottom: 2px solid $accent;
 }
 .header-inner {
   display: flex;
@@ -31,7 +31,6 @@ body {
 }
 .logo {
   font-size: 20px;
-  margin: 0;
 }
 .main-nav {
   display: flex;
@@ -41,9 +40,19 @@ body {
 .main-nav a {
   color: $text;
   opacity: 0.9;
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 .main-nav a:hover {
   color: $accent;
+  background: rgba($accent, 0.1);
+}
+.main-nav a.active {
+  color: $accent;
+  background: rgba($accent, 0.15);
+  border: 1px solid rgba($accent, 0.3);
 }
 .basket {
   background: $accent;
@@ -56,26 +65,52 @@ body {
 main.container {
   padding: 24px 16px;
   background: $panel;
-  border: 1px solid $border;
+  border: 2px solid $border;
   border-radius: 12px;
   margin-top: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
+.hero {
+  margin-top: 16px;
+}
+.hero .container {
+  background: url("/assets/hero.jpg") center/cover no-repeat, rgba($panel, 0.9);
+  border: 1px solid $border;
+  border-radius: 12px;
+}
+.hero-inner {
+  padding: 48px 16px;
+}
+.hero-copy h2 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+}
+.hero-copy p {
+  margin: 0;
+  color: $muted;
+}
+
 .posters-grid {
   @extend .grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 24px;
   margin-top: 12px;
 }
 .poster-card {
   background: $panel;
   border: 1px solid $border;
-  border-radius: 12px;
   overflow: hidden;
+  display: flex;
+  gap: 12px;
+}
+/* Billedkolonne med fast bredde og ens aspect ratio */
+.poster-card > .poster-image-wrap {
+  width: 160px;
+  flex-shrink: 0;
 }
 .poster-image-wrap {
   aspect-ratio: 3 / 4;
-  // Use Bordeaux for empty image background
   background: $bordeaux;
   display: flex;
   align-items: center;
@@ -86,12 +121,18 @@ main.container {
   height: 100%;
   object-fit: cover;
 }
+
+/* Indholdskolonne med ens spacing */
+.poster-content,
+.poster-info {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .poster-placeholder {
   color: $muted;
   font-size: 14px;
-}
-.poster-info {
-  padding: 10px 12px;
 }
 .poster-title {
   margin: 0 0 4px 0;
@@ -104,6 +145,65 @@ main.container {
 .poster-price {
   color: $text;
 }
+.poster-genres {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.badge {
+  background: rgba($accent, 0.15);
+  color: $text;
+  border: 1px solid rgba($accent, 0.3);
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+.poster-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+.btn-like {
+  @include button-reset;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid $border;
+  color: $text;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  transform-origin: center;
+}
+.btn-like:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: scale(1.05);
+}
+.btn-like:active {
+  transform: scale(0.95);
+  background: rgba($accent, 0.2);
+}
+/* Puls animation når liked */
+@keyframes heartPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.btn-like.liked {
+  color: #ff6b6b;
+  animation: heartPulse 0.3s ease;
+}
+.btn-read {
+  display: inline-block;
+  background: $accent;
+  color: #081018;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
 
 .site-footer {
   margin-top: 40px;
@@ -112,4 +212,224 @@ main.container {
   background: $panel-2;
   border-top: 1px solid $border;
   padding: 16px;
+}
+
+/* Plakater side layout */
+.plakater-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Sidebar styling */
+.plakater-aside {
+  background: $panel;
+  border: 1px solid $border;
+  border-radius: 12px;
+  padding: 16px;
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+}
+.plakater-aside h2 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: $accent;
+}
+.filter-section {
+  margin-bottom: 20px;
+}
+.filter-section h3 {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  color: $text;
+  opacity: 0.8;
+}
+.genre-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.genre-list li {
+  margin-bottom: 6px;
+}
+.genre-list button {
+  @include button-reset;
+  width: 100%;
+  text-align: left;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: $text;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  font-size: 13px;
+}
+.genre-list button:hover {
+  background: rgba($accent, 0.1);
+  opacity: 1;
+}
+.genre-list button.active {
+  background: rgba($accent, 0.15);
+  color: $accent;
+  opacity: 1;
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: $text;
+  opacity: 0.8;
+}
+.checkbox-label input {
+  accent-color: $accent;
+}
+
+/* Hovedindhold styling */
+.plakater-main {
+  min-height: 60vh;
+}
+.plakater-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $border;
+}
+.plakater-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: $accent;
+}
+.sort-select {
+  background: $panel;
+  border: 1px solid $border;
+  color: $text;
+  padding: 8px 12px;
+  border-radius: 8px;
+  outline: none;
+}
+.sort-select:focus {
+  border-color: $accent;
+}
+
+/* Plakat grid - vertikal layout */
+.plakater-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+.plakat-card {
+  background: $panel;
+  border: 1px solid $border;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+.plakat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.plakat-image-wrap {
+  aspect-ratio: 3 / 4;
+  background: $bordeaux;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plakat-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.plakat-placeholder {
+  color: $muted;
+  font-size: 12px;
+}
+.plakat-info {
+  padding: 16px;
+}
+.plakat-title {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  line-height: 1.3;
+}
+.plakat-price {
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  color: $accent;
+}
+.plakat-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.btn-cart {
+  @include button-reset;
+  background: $accent;
+  color: #081018;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  flex: 1;
+  transition: background 0.2s ease;
+}
+.btn-cart:hover {
+  background: lighten($accent, 10%);
+}
+
+/* No results */
+.no-results {
+  text-align: center;
+  color: $muted;
+  padding: 40px;
+  font-style: italic;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid $border;
+}
+.pagination-btn {
+  @include button-reset;
+  background: $panel;
+  border: 1px solid $border;
+  color: $text;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.pagination-btn:hover:not(:disabled) {
+  background: rgba($accent, 0.1);
+  border-color: $accent;
+  color: $accent;
+}
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pagination-info {
+  color: $text;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .plakater-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .plakater-aside {
+    position: static;
+  }
 }
