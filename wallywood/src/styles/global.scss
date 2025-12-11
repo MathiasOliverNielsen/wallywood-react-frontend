@@ -1,0 +1,115 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+@use "./reset";
+@use "./utilities";
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  // Use Bordeaux red where there’s no content (page background)
+  background: $bordeaux;
+  color: $text;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.site-header .container {
+  background: rgba($panel, 0.9);
+  border-bottom: 1px solid $border;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  font-size: 20px;
+  margin: 0;
+}
+.main-nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.main-nav a {
+  color: $text;
+  opacity: 0.9;
+}
+.main-nav a:hover {
+  color: $accent;
+}
+.basket {
+  background: $accent;
+  color: #081018;
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+main.container {
+  padding: 24px 16px;
+  background: $panel;
+  border: 1px solid $border;
+  border-radius: 12px;
+  margin-top: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.posters-grid {
+  @extend .grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  margin-top: 12px;
+}
+.poster-card {
+  background: $panel;
+  border: 1px solid $border;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.poster-image-wrap {
+  aspect-ratio: 3 / 4;
+  // Use Bordeaux for empty image background
+  background: $bordeaux;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.poster-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.poster-placeholder {
+  color: $muted;
+  font-size: 14px;
+}
+.poster-info {
+  padding: 10px 12px;
+}
+.poster-title {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+.poster-meta {
+  color: $muted;
+  font-size: 14px;
+}
+.poster-price {
+  color: $text;
+}
+
+.site-footer {
+  margin-top: 40px;
+}
+.site-footer .container {
+  background: $panel-2;
+  border-top: 1px solid $border;
+  padding: 16px;
+}
