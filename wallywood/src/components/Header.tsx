@@ -1,24 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container } from "./Container";
 
-export const Header = () => {
+type HeaderProps = {
+  currentPath: string;
+  navigateTo: (path: string) => void;
+};
+
+export const Header = ({ currentPath, navigateTo }: HeaderProps) => {
   const [cartCount] = useState<number>(0);
-  const [currentPath, setCurrentPath] = useState<string>("");
-
-  // Følg med i URL ændringer
-  useEffect(() => {
-    const updatePath = () => {
-      setCurrentPath(window.location.pathname);
-    };
-
-    // Sæt initial path
-    updatePath();
-
-    // Lyt til popstate (tilbage/frem knapper)
-    window.addEventListener("popstate", updatePath);
-
-    return () => window.removeEventListener("popstate", updatePath);
-  }, []);
 
   // Tjek om link er aktivt
   const isActive = (path: string) => {
@@ -31,8 +20,7 @@ export const Header = () => {
   // Håndter navigation uden page reload
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
-    window.history.pushState(null, "", path);
-    setCurrentPath(path);
+    navigateTo(path);
   };
 
   return (

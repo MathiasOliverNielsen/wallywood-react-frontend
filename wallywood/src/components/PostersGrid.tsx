@@ -18,7 +18,11 @@ type Poster = {
   genrePosterRels?: { genre: { title: string } }[];
 };
 
-export const PostersGrid = () => {
+type PostersGridProps = {
+  navigateTo: (path: string) => void;
+};
+
+export const PostersGrid = ({ navigateTo }: PostersGridProps) => {
   // Lokale tilstande: data, loading og fejl
   const [posters, setPosters] = useState<Poster[]>([]);
   const [loading, setLoading] = useState(true);
@@ -109,7 +113,14 @@ export const PostersGrid = () => {
                   <button className={`btn-like ${likedPosters.has(p.id) ? "liked" : ""}`} aria-label="Vis interesse" onClick={() => handleLike(p.id)}>
                     ❤
                   </button>
-                  <a className="btn-read" href={`/poster/${p.slug}`}>
+                  <a
+                    className="btn-read"
+                    href={`/poster/${p.slug}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigateTo(`/poster/${p.slug}`);
+                    }}
+                  >
                     Læs mere
                   </a>
                 </div>

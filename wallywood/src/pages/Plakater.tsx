@@ -19,11 +19,16 @@ type Poster = {
   genrePosterRels?: { genre: Genre }[];
 };
 
-export const Plakater = () => {
+type PlakaterProps = {
+  navigateTo: (path: string) => void;
+  genreSlug?: string;
+};
+
+export const Plakater = ({ navigateTo, genreSlug }: PlakaterProps) => {
   // States for data og filtrering
   const [posters, setPosters] = useState<Poster[]>([]);
   const [genres, setGenres] = useState<Genre[]>([]);
-  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
+  const [selectedGenre, setSelectedGenre] = useState<string | null>(genreSlug ?? null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [likedPosters, setLikedPosters] = useState<Set<number>>(new Set());
@@ -95,6 +100,13 @@ export const Plakater = () => {
     setCurrentPage(1);
   }, [selectedGenre]);
 
+  // Opdater selectedGenre hvis genreSlug ændres udefra (fx via URL)
+  useEffect(() => {
+    if (genreSlug !== undefined) {
+      setSelectedGenre(genreSlug);
+    }
+  }, [genreSlug]);
+
   // Håndter like/unlike
   const handleLike = (posterId: number) => {
     setLikedPosters((prev) => {
@@ -134,7 +146,12 @@ export const Plakater = () => {
             <h3>Genre</h3>
             <ul className="genre-list">
               <li>
-                <button className={selectedGenre === null ? "active" : ""} onClick={() => setSelectedGenre(null)}>
+                <button
+                  className={selectedGenre === null ? "active" : ""}
+                  onClick={() => {
+                    navigateTo("/plakater");
+                  }}
+                >
                   Alle
                 </button>
               </li>
@@ -143,7 +160,12 @@ export const Plakater = () => {
 
                 return (
                   <li key={genre.id}>
-                    <button className={selectedGenre === genre.slug ? "active" : ""} onClick={() => setSelectedGenre(genre.slug)}>
+                    <button
+                      className={selectedGenre === genre.slug ? "active" : ""}
+                      onClick={() => {
+                        navigateTo(`/plakater/genre/${genre.slug}`);
+                      }}
+                    >
                       {genre.title} ({count})
                     </button>
                   </li>
@@ -174,7 +196,16 @@ export const Plakater = () => {
 
           <div className="plakater-grid">
             {currentPosters.map((poster) => (
-              <article key={poster.id} className="plakat-card">
+              <article
+                key={poster.id}
+                className="plakat-card"
+                onClick={(e) => {
+                  // Hvis der klikkes på like-knappen, gør intet
+                  if ((e.target as HTMLElement).closest(".btn-like")) return;
+                  navigateTo(`/poster/${poster.slug}`);
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 <div className="plakat-image-wrap">{poster.image ? <img src={poster.image} alt={poster.name} /> : <div className="plakat-placeholder">Ingen billede</div>}</div>
 
                 <div className="plakat-info">
@@ -182,8 +213,15 @@ export const Plakater = () => {
                   <p className="plakat-price">Kr. {poster.price?.toFixed(2) || "0,00"}</p>
 
                   <div className="plakat-actions">
-                    <button className="btn-cart">Læg i kurv</button>
-                    <button className={`btn-like ${likedPosters.has(poster.id) ? "liked" : ""}`} onClick={() => handleLike(poster.id)} aria-label="Tilføj til favoritter">
+                    <button className={`btn-cart`}>Læg i kurv</button>
+                    <button
+                      className={`btn-like ${likedPosters.has(poster.id) ? "liked" : ""}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleLike(poster.id);
+                      }}
+                      aria-label="Tilføj til favoritter"
+                    >
                       ♡
                     </button>
                   </div>

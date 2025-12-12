@@ -1,9 +1,13 @@
 import { PostersGrid } from "../components/PostersGrid";
 
-export const Home = () => {
+type HomeProps = {
+  navigateTo: (path: string) => void;
+};
+
+export const Home = ({ navigateTo }: HomeProps) => {
   return (
     <div className="home">
-      <PostersGrid />
+      <PostersGrid navigateTo={navigateTo} />
     </div>
   );
 };
