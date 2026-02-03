@@ -1,7 +1,7 @@
-@use '../../styles/globals' as globals;
+@import "../../styles/globals.scss";
 
 .footerStyle {
-  border-top: solid 2px globals.$color_beige;
+  border-top: solid 2px $ww-beige;
   margin-top: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -1,6 +1,6 @@
-@use '../../styles/globals' as globals;
+@import "../../../styles/globals.scss";
 
 .titleStyle {
   font-size: 2rem;
-  color: globals.$color_light_brown;
+  color: $ww-brown;
 }

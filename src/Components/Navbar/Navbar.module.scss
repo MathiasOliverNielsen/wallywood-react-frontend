@@ -1,4 +1,4 @@
-@use '../../styles/globals' as globals;
+@import "../../styles/globals.scss";
 
 .navbarStyle {
   display: grid;
@@ -6,12 +6,12 @@
   height: 82px;
   align-items: end;
   justify-items: start;
-  border-bottom: solid 2px globals.$color_bg_brown;
+  border-bottom: solid 2px $ww-brown;
   margin-bottom: 16px;
 
   h3 {
     font-size: 3rem;
-    color: globals.$color_light_brown;
+    color: $ww-brown;
     text-align: center;
     margin: 8px;
     font-weight: 800;
