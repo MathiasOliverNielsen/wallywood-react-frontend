@@ -2,6 +2,7 @@ import { NavLink } from "react-router";
 import style from "./Navbar.module.scss";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { FaBasketShopping } from "react-icons/fa6";
 
 interface NavbarProps {
   logoNav: string;
@@ -15,7 +16,9 @@ export function Navbar(props: NavbarProps) {
 
   return (
     <>
-      <div className={style.cartIcon}>🛒</div>
+      <div className={style.cartIcon}>
+        <FaBasketShopping />
+      </div>
       <nav className={style.navbarStyle}>
         <h3>{logoNav}</h3>
         <ul>
