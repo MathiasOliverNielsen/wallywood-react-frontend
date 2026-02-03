@@ -1,4 +1,8 @@
-import style from './Footer.module.scss'
+import style from "./Footer.module.scss";
+import { FaPinterest } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -15,12 +19,12 @@ export function Footer() {
           <p>MOBIL: +45 1232 2323</p>
         </div>
       </section>
-      <section>
-        <p>icon</p>
-        <p>icon</p>
-        <p>icon</p>
-        <p>icon</p>
+      <section className={style.socialIcons}>
+        <FaPinterest />
+        <FaInstagram />
+        <FaFacebook />
+        <FaTwitter />
       </section>
     </footer>
-  )
+  );
 }

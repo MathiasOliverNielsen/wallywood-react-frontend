@@ -1,0 +1,76 @@
+@import "../../styles/globals.scss";
+
+.aboutUsContainer {
+  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aboutSection {
+  margin-top: 24px;
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.textContent {
+  p {
+    font-size: 1rem;
+    font-weight: 200;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+}
+
+.imageContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.starImage {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  animation: starGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes starGlow {
+  from {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  to {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .aboutUsContainer {
+    padding: 16px;
+  }
+
+  .aboutContent {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .imageContent {
+    height: 200px;
+  }
+
+  .starImage {
+    font-size: 120px;
+  }
+}

@@ -13,6 +13,10 @@
     gap: 32px;
   }
 
+  section:first-child {
+    justify-content: flex-start;
+  }
+
   section:nth-child(2) {
     justify-content: end;
   }
@@ -21,10 +25,58 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    flex: 1;
+  }
+
+  h3 {
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #d97852;
   }
 
   p {
     font-weight: 200;
     font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
+.socialIcons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  svg {
+    font-size: 1.5rem;
+    color: #333;
+    transition:
+      color 0.3s ease,
+      transform 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:nth-child(1):hover {
+      // Pinterest
+      color: #e60023;
+    }
+
+    &:nth-child(2):hover {
+      // Instagram
+      color: #e4405f;
+    }
+
+    &:nth-child(3):hover {
+      // Facebook
+      color: #1877f2;
+    }
+
+    &:nth-child(4):hover {
+      // Twitter
+      color: #1da1f2;
+    }
   }
 }
