@@ -123,7 +123,7 @@ export function Posters() {
         <GenreSelect setSelectedGenre={setSelectedGenre} selectedGenre={selectedGenre} />
         <Grid gtc={"1fr 1fr 1fr"} gap={16}>
           {posters.map((item) => {
-            return <PosterCard key={item.id} price={item.price} imageUrl={item.image} title={item.name} />;
+            return <PosterCard key={item.id} id={item.id} price={item.price} imageUrl={item.image} title={item.name} />;
           })}
         </Grid>
       </Grid>

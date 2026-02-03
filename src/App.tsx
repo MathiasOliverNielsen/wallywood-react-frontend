@@ -5,6 +5,8 @@ import { MainLayout } from "./layouts/MainLayout";
 import { Posters } from "./pages/posters/posters";
 import { Login } from "./pages/login/Login";
 import { AboutUs } from "./pages/aboutUs/aboutUs";
+import { ContactUs } from "./pages/contactUs/contactUs";
+import { PosterDetail } from "./pages/posterDetail/posterDetail";
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/posters" element={<Posters />} />
-            <Route path="/contact" element={<div>Contact</div>} />
+            <Route path="/posters/:id" element={<PosterDetail />} />
+            <Route path="/contact" element={<ContactUs />} />
             <Route path="/login" element={<Login />} />
           </Route>
         </Routes>

@@ -1,6 +1,7 @@
 import type { Genre } from "../../../types/movieType";
 import style from "./Poster.module.scss";
 import parse from "html-react-parser";
+import { useNavigate } from "react-router";
 
 interface PosterProps {
   id: number;
@@ -12,8 +13,18 @@ interface PosterProps {
 }
 
 export function Poster({ id, imageUrl, title, description, genres }: PosterProps) {
+  const navigate = useNavigate();
+
+  const handleReadMore = () => {
+    navigate(`/posters/${id}`);
+  };
+
+  const handlePosterClick = () => {
+    navigate(`/posters/${id}`);
+  };
+
   return (
-    <div key={id} className={style.posterStyle}>
+    <div key={id} className={style.posterStyle} onClick={handlePosterClick}>
       <img src={imageUrl} alt={title} />
       <div className={style.posterContent}>
         <h4>{title}</h4>
@@ -30,7 +41,15 @@ export function Poster({ id, imageUrl, title, description, genres }: PosterProps
               );
             })}
         </div>
-        <button className={style.readMoreButton}>Læs mere</button>
+        <button
+          className={style.readMoreButton}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleReadMore();
+          }}
+        >
+          Læs mere
+        </button>
       </div>
     </div>
   );
