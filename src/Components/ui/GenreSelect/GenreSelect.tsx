@@ -1,23 +1,23 @@
-import { type SetStateAction } from 'react'
-import { useFetch } from '../../hooks/useFetch'
-import type { Genre } from '../../types/movieType'
-import style from './GenreSelect.module.scss'
+import { type SetStateAction } from "react";
+import { useFetch } from "../../../hooks/useFetch";
+import type { Genre } from "../../../types/movieType";
+import style from "./GenreSelect.module.scss";
 
 interface GenreSelectProps {
-  setSelectedGenre: React.Dispatch<SetStateAction<string>>
+  setSelectedGenre: React.Dispatch<SetStateAction<string>>;
 }
 
 export function GenreSelect({ setSelectedGenre }: GenreSelectProps) {
-  const { data, isLoading, error } = useFetch<Array<Genre>>('http://localhost:3000/genre')
+  const { data, isLoading, error } = useFetch<Array<Genre>>("http://localhost:3000/genre");
 
-  console.log(data)
+  console.log(data);
 
   if (isLoading) {
-    return <p>Loading genres...</p>
+    return <p>Loading genres...</p>;
   }
 
   if (error) {
-    return <b>Error: {error}</b>
+    return <b>Error: {error}</b>;
   }
 
   return (
@@ -28,9 +28,9 @@ export function GenreSelect({ setSelectedGenre }: GenreSelectProps) {
             <li key={item.id} onClick={() => setSelectedGenre(item.slug)}>
               {item.title}
             </li>
-          )
+          );
         })}
       </ul>
     </aside>
-  )
+  );
 }

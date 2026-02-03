@@ -1,14 +1,14 @@
-import type { Genre } from '../../types/movieType'
-import style from './Poster.module.scss'
-import parse from 'html-react-parser'
+import type { Genre } from "../../../types/movieType";
+import style from "./Poster.module.scss";
+import parse from "html-react-parser";
 
 interface PosterProps {
-  id: number
-  imageUrl: string
-  title: string
-  description?: string
-  genres: Array<Genre>
-  price?: number
+  id: number;
+  imageUrl: string;
+  title: string;
+  description?: string;
+  genres: Array<Genre>;
+  price?: number;
 }
 
 export function Poster({ id, imageUrl, title, description, genres, price }: PosterProps) {
@@ -21,11 +21,11 @@ export function Poster({ id, imageUrl, title, description, genres, price }: Post
         <p>Genre:</p>
         {genres &&
           genres.map((genre: Genre) => {
-            return <span key={genre.id}>{genre.title}</span>
+            return <span key={genre.id}>{genre.title}</span>;
           })}
         {price && <p>Price: {price}</p>}
         <button>Læs mere</button>
       </div>
     </div>
-  )
+  );
 }
