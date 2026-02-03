@@ -1,0 +1,12 @@
+@import "../styles/globals.scss";
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 8px;
+  background-color: $ww-white;
+  max-width: 1366px;
+  margin: auto;
+  padding: 0 10vw 0 10vw;
+}

@@ -1,0 +1,45 @@
+@use '../../styles/globals' as globals;
+
+.navbarStyle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 82px;
+  align-items: end;
+  justify-items: start;
+  border-bottom: solid 2px globals.$color_bg_brown;
+  margin-bottom: 16px;
+
+  h3 {
+    font-size: 3rem;
+    color: globals.$color_light_brown;
+    text-align: center;
+    margin: 8px;
+    font-weight: 800;
+    padding-left: 8px;
+  }
+  ul {
+    margin: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 1.3rem;
+    li {
+      list-style-type: none;
+      justify-items: end;
+      text-decoration: none;
+      font-weight: 100;
+      font-size: 1.3rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      a {
+        text-decoration: none;
+        font-weight: 100;
+        font-size: 1.3rem;
+        color: black;
+      }
+    }
+    li:hover {
+      font-size: 1.35;
+      text-decoration: underline;
+    }
+  }
+}

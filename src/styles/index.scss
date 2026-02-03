@@ -1,13 +1,21 @@
+@import "./globals.scss";
+@import "./reset.scss";
+
 // Generic styles for the app
+$max-width: 1200px;
+
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
   background: #fafbfc;
   color: #222;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
-  color: #0074d9;
+  color: $primary-accent;
   text-decoration: none;
   &:hover {
     text-decoration: underline;

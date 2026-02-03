@@ -1,0 +1,39 @@
+// Global SCSS variables for colors and typography
+
+// Color palette
+$ww-brown-dark: #5c1f06;
+$ww-white: #f9f9f9;
+$ww-black-transparent: #00000029;
+$ww-orange: #d97852;
+$ww-beige: #d1b3a7;
+$ww-brown: #524641;
+$ww-grey: #cccccc;
+$ww-black: #000000;
+$primary-accent: $ww-orange;
+
+// Typography
+$font-titillium: "Titillium Web", Arial, sans-serif;
+$font-open-sans: "Open Sans", Arial, sans-serif;
+
+// Font sizes
+$logo-size: 54px;
+$h1-size: 32px;
+$h2-size: 20px;
+$h3-size: 16px;
+$body-size: 16px;
+$body-alt-size: 14px;
+$h1-line-height: 48px;
+
+// Font weights
+$weight-black: 900;
+$weight-bold: 700;
+$weight-regular: 400;
+
+// Example usage (to be used in components or index.scss):
+// h1 {
+//   font-family: $font-titillium;
+//   font-size: $h1-size;
+//   font-weight: $weight-bold;
+//   color: $ww-orange;
+//   line-height: $h1-line-height;
+// }
