@@ -1,0 +1,64 @@
+@import "../../../styles/globals.scss";
+
+.posterCard {
+  display: flex;
+  flex-direction: column;
+  background-color: $ww-white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+  }
+
+  .cardContent {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h4 {
+      font-family: $font-open-sans;
+      font-size: 16px;
+      font-weight: $weight-bold;
+      color: $ww-brown;
+      margin: 0;
+      text-align: center;
+    }
+
+    .price {
+      font-family: $font-open-sans;
+      font-size: 14px;
+      font-weight: $weight-regular;
+      color: $ww-brown;
+      text-align: center;
+      margin: 0;
+    }
+
+    .addToCartButton {
+      background-color: $ww-beige;
+      color: $ww-brown;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-family: $font-open-sans;
+      font-size: 12px;
+      font-size: 14px;
+      font-weight: $weight-regular;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: darken($ww-beige, 10%);
+      }
+    }
+  }
+}

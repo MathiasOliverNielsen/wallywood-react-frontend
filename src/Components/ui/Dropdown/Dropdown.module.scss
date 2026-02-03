@@ -1,0 +1,30 @@
+@import "../../../styles/globals.scss";
+
+.dropdown {
+  font-family: $font-open-sans;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid $ww-brown;
+  border-radius: 4px;
+  background-color: $ww-white;
+  color: $ww-brown;
+  cursor: pointer;
+  max-width: 200px;
+  outline: none;
+
+  &:focus {
+    border-color: $ww-orange;
+  }
+
+  &:hover {
+    border-color: $ww-orange;
+  }
+
+  option {
+    display: flex;
+    justify-content: center;
+    padding: 4px;
+    background-color: $ww-white;
+    color: $ww-brown;
+  }
+}
