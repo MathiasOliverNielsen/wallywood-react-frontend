@@ -8,7 +8,7 @@ interface GenreSelectProps {
 }
 
 export function GenreSelect({ setSelectedGenre }: GenreSelectProps) {
-  const { data, isLoading, error } = useFetch<Array<Genre>>("http://localhost:3000/genre");
+  const { data, isLoading, error } = useFetch<Array<Genre>>("http://localhost:3000/api/genres");
 
   console.log(data);
 

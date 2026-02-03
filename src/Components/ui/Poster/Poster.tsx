@@ -11,20 +11,26 @@ interface PosterProps {
   price?: number;
 }
 
-export function Poster({ id, imageUrl, title, description, genres, price }: PosterProps) {
+export function Poster({ id, imageUrl, title, description, genres }: PosterProps) {
   return (
     <div key={id} className={style.posterStyle}>
-      <img src={imageUrl}></img>
-      <div>
+      <img src={imageUrl} alt={title} />
+      <div className={style.posterContent}>
         <h4>{title}</h4>
-        {description && <div>{parse(description)}</div>}
-        <p>Genre:</p>
-        {genres &&
-          genres.map((genre: Genre) => {
-            return <span key={genre.id}>{genre.title}</span>;
-          })}
-        {price && <p>Price: {price}</p>}
-        <button>Læs mere</button>
+        {description && <div className={style.description}>{parse(description)}</div>}
+        <p className={style.genreLabel}>Genre:</p>
+        <div className={style.genreList}>
+          {genres &&
+            genres.map((genre: Genre, index) => {
+              return (
+                <span key={genre.id}>
+                  {genre.title}
+                  {index < genres.length - 1 ? ", " : ""}
+                </span>
+              );
+            })}
+        </div>
+        <button className={style.readMoreButton}>Læs mere</button>
       </div>
     </div>
   );

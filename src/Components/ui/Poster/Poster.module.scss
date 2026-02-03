@@ -1,28 +1,81 @@
+@import "../../../styles/globals.scss";
+
 .posterStyle {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  margin-bottom: 32px;
 
-  div {
+  img {
+    width: 160px;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .posterContent {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-  }
-  img {
-    max-width: 160px;
-    margin-right: 16px;
-  }
+    gap: 8px;
+    padding-top: 8px;
 
-  h4 {
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
+    h4 {
+      font-family: $font-open-sans;
+      font-size: 20px;
+      font-weight: $weight-bold;
+      color: $ww-brown;
+      margin: 0 0 8px 0;
+    }
 
-  span {
-    font-size: 0.8rem;
-    display: inline-block;
-  }
+    .description {
+      font-family: $font-open-sans;
+      font-size: 16px;
+      font-weight: $weight-regular;
+      color: $ww-brown;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
 
-  p {
-    font-size: 0.9rem;
+    .genreLabel {
+      font-family: $font-open-sans;
+      font-size: 14px;
+      font-weight: $weight-regular;
+      color: $ww-brown;
+      margin: 8px 0 4px 0;
+    }
+
+    .genreList {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      span {
+        font-family: $font-open-sans;
+        font-size: 14px;
+        font-weight: $weight-regular;
+        color: $ww-brown;
+      }
+    }
+
+    .readMoreButton {
+      background-color: $ww-beige;
+      color: $ww-brown;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-family: $font-open-sans;
+      font-size: 14px;
+      font-weight: $weight-regular;
+      cursor: pointer;
+      margin-top: 12px;
+      align-self: flex-start;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: darken($ww-beige, 10%);
+      }
+    }
   }
 }

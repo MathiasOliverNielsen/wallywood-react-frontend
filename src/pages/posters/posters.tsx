@@ -11,25 +11,9 @@ export function Posters() {
   const [selectedGenre, setSelectedGenre] = useState<string>("komedie");
   const [selectedSort, setSelectedSort] = useState<string>("asc");
 
-  // Initialiser variabler til sortering
-  let sort_Key = "random";
-  let sort_Direction = "asc";
+  // Sortering fjernet - ikke i brug
 
-  // Hvis selectedSort er "name", så sæt sort_Key til 'name' og ellers sæt den til 'random'
-  if (selectedSort === "name") {
-    sort_Key = "name";
-  } else {
-    sort_Key = "random";
-  }
-
-  // Hvis selectedSort er 'asc' eller 'desc' så sæt sort_Direction til at være selectedSort (asc/desc)
-  // Og sæt sort_Key til 'price'
-  if (selectedSort === "asc" || selectedSort === "desc") {
-    sort_Direction = selectedSort;
-    sort_Key = "price";
-  }
-
-  const { data, isLoading, error } = useFetch<Array<MovieData>>(`http://localhost:3000/posters/list_by_genre/${selectedGenre}?sort_key=${sort_Key}&sort_direction=${sort_Direction}`);
+  const { data, isLoading, error } = useFetch<Array<MovieData>>(`http://localhost:3000/api/posters/genre/${selectedGenre}`);
 
   if (isLoading) {
     return <h1>Loading data......</h1>;

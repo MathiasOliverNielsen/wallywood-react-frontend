@@ -22,7 +22,7 @@ export function Login() {
     body.append("username", userName);
     body.append("password", passWord);
 
-    const url = "http://localhost:3000/login";
+    const url = "http://localhost:3000/api/login";
 
     // POST body til backend server og håndter response (success/error)
     fetch(url, { method: "POST", body: body })

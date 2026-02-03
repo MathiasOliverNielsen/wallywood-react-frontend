@@ -1,6 +1,10 @@
 @import "../../../styles/globals.scss";
 
 .titleStyle {
-  font-size: 2rem;
-  color: $ww-brown;
+  font-family: $font-titillium;
+  font-size: $h1-size;
+  font-weight: $weight-bold;
+  color: $ww-orange;
+  line-height: $h1-line-height;
+  margin: 32px 0 24px 0;
 }
