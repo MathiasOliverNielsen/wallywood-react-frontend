@@ -31,7 +31,9 @@ export function Posters() {
         <GenreSelect setSelectedGenre={setSelectedGenre} />
         <Grid gtc={"1fr 1fr 1fr"} gap={32}>
           {data?.map((item) => {
-            return <Poster key={item.id} price={item.price} imageUrl={item.image} id={item.id} genres={item.genres} title={item.name} />;
+            // Transform genrePosterRels to genres array
+            const genres = item.genrePosterRels?.map((rel) => rel.genre) || [];
+            return <Poster key={item.id} price={item.price} imageUrl={item.image} id={item.id} genres={genres} title={item.name} />;
           })}
         </Grid>
       </Grid>

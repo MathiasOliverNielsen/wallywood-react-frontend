@@ -1,21 +1,24 @@
 export interface MovieData {
-  id: number
-  name: string
-  description: string
-  image: string
-  price: number
-  genres: Genre[]
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  image: string;
+  width: number;
+  height: number;
+  price: number;
+  stock: number;
+  createdAt: string;
+  updatedAt: string;
+  genrePosterRels: GenrePosterRel[];
 }
 
 export interface Genre {
-  id: number
-  title: string
-  slug: string
-  poster_genre_rel: PosterGenreRel
+  id: number;
+  title: string;
+  slug: string;
 }
 
-export interface PosterGenreRel {
-  id: number
-  poster_id: number
-  genre_id: number
+export interface GenrePosterRel {
+  genre: Genre;
 }
